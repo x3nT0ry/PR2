@@ -14,21 +14,11 @@ function getRow(firstRow, secondRow, letter) {
     const secondRowCount = countLetter(secondRow, letter);
 
     if (firstRowCount === 0 && secondRowCount === 0) {
-        return `Буква '${letter}' отсутствует в обеих строках.`;
+        return `Буква '${letter}' відсутня в обох рядках.`;
     }
 
     return firstRowCount >= secondRowCount ? firstRow : secondRow;
 }
-
-
-const firstRow = prompt('Введіть перший рядок:');
-const secondRow = prompt('Введіть другий рядок:');
-const letter = prompt('Введіть літеру, яку хочете порахувати:');
-
-const result = getRow(firstRow, secondRow, letter);
-alert(`Рядок з більшою кількістю літер "${letter}": ${result}`);
-
-// _______________________________________________________________________________________________________
 
 function formattedPhone(phone) {
     phone = phone.replace(/\D/g, '');
@@ -46,11 +36,19 @@ function formattedPhone(phone) {
     return formatted;
 }
 
-
 function formattedPhoneInteractive() {
     let phone = prompt('Введіть номер телефону:');
     let result = formattedPhone(phone);
     alert(result);
 }
 
-formattedPhoneInteractive();
+function countLetterInteractive() {
+    const firstRow = prompt('Введіть перший рядок:');
+    const secondRow = prompt('Введіть другий рядок:');
+    const letter = prompt('Введіть літеру, яку хочете порахувати:');
+    const result = getRow(firstRow, secondRow, letter);
+    alert(`Рядок з більшою кількістю літер "${letter}": ${result}`);
+}
+
+document.getElementById('countLetterButton').addEventListener('click', countLetterInteractive);
+document.getElementById('formatPhoneButton').addEventListener('click', formattedPhoneInteractive);
